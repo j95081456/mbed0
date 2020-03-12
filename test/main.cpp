@@ -2,35 +2,41 @@
 
 using namespace std;
 
-int factorial(int n);
+void print (int a[], int cn);
+void permutation(int a[], int n , int cn);
+
+int count = 0;
 
 int main(){
     int n;
-    int k;
     cin >> n;
+    int cn = n;
     int a[n];
-    for (int i=0 ; i<n ; i++){
-        cin >> a[i];
+    for (int i=0; i < n; i++){
+        a[i]=i+1;
     }
-    for (int i=0 ; i<n ; i++){
-        for (int j=0 ; j<a[i]; j++){
-            for (int p=0 ; p<=j ; p++){
-            if (j==0 && p==0){ cout << 1;}
-            else if (j == p && j!=0){ cout << 1;}
-            else {  
-                k = factorial(j)/(factorial(j-p)*factorial(p));
-                    cout << k << " ";
-            }
-        }
-        cout << endl;
-      }
-    }
+    permutation(a,n,cn);
+    cout << "count" << count;
+}
 
+void permutation(int a[], int n , const int cn){
+    if (n==1) {
+        count++ ;
+        print(a,cn);
+    }
+    else {
+        for (int i=0; i<n ; i++){
+            swap(a[n-1],a[i]);
+            permutation(a,n-1,cn);
+            swap(a[n-1],a[i]);
+        }
+    }
 
 }
 
-int factorial(int n){
-    if (n==1 || n==0) return 1;
-    else return factorial(n-1)*n;
-    
+void print (int a[], int cn){
+     for (int i=cn-1; i >= 0; i--){
+        cout << a[i] ;
+    }
+    cout << endl;
 }
