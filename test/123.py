@@ -63,7 +63,7 @@ target_data = list(filter(lambda item: (
 
 # Print result
 
-
+n=0
 HUMD_C0A880= 0.0
 HUMD_C0F9A0 = 0.0
 HUMD_C0G640 = 0.0
